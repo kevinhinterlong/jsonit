@@ -7,9 +7,13 @@ apply plugin: 'idea'
 
 sourceCompatibility = 1.8
 
+repositories {
+    mavenCentral()
+}
+
 def generatedSources = [
-        rootDir: 'generated-src/',
-        javaDir: 'generated-src/java'
+    rootDir: 'generated-src/',
+    javaDir: 'generated-src/java'
 ]
 
 sourceSets {
@@ -18,10 +22,6 @@ sourceSets {
             srcDir generatedSources.javaDir
         }
     }
-}
-
-repositories {
-    mavenCentral()
 }
 
 dependencies {
@@ -33,7 +33,6 @@ dependencies {
 }
 
 generateGrammarSource {
-    maxHeapSize = '64m'
     arguments += ['-visitor', '-long-messages']
     outputDirectory = file(generatedSources.javaDir)
 }
